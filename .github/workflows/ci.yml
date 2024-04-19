@@ -1,4 +1,4 @@
-name: CI
+name: Continuous Integration
 
 on:
   push:
@@ -21,10 +21,13 @@ jobs:
         node-version: '14'
 
     - name: Install dependencies
-      run: npm install 
+      run: npm install
 
-    - name : Lint
+    - name: Install ESLint
+      run: npm install eslint --save-dev
+
+    - name: Lint
       run: npm run lint
-      
+
     - name: Run tests
       run: npm test
