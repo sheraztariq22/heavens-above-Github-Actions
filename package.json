@@ -5,6 +5,7 @@
   "description": "Scripts for scraping the Heavens Above website.",
   "main": "run.js",
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "node run.js",
     "lint": "eslint ."
   },
