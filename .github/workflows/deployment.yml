@@ -29,8 +29,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Build
-        run: npm run build
+      - name: Run script
+        run: node run.js
 
       - name: Deploy with gh-pages
         run: |
