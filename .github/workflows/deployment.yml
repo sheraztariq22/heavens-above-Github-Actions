@@ -34,7 +34,9 @@ jobs:
           git config user.name "sheraztariq22"
           git config user.email "sheraztariq2978@gmail.com"
 
-      - name: Deploy to GitHub Pages
-        run: npm run deploy
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
