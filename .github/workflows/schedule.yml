@@ -13,5 +13,5 @@ jobs:
 
       - name: Run maintenance script
         run: |
-          chmod +x ../maintenance-script.sh
-          ../maintenance-script.sh
+          chmod +x ./maintenance-script.sh
+          ./maintenance-script.sh
