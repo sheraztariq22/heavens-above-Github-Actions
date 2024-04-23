@@ -29,6 +29,11 @@ jobs:
       - name: Run script
         run: node run.js
 
+      - name: Configure git
+        run: |
+          git config user.name "sheraztariq22"
+          git config user.email "sheraztariq2978@gmail.com"
+
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:
