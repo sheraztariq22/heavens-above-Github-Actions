@@ -1,0 +1,36 @@
+body            {font-family: verdana,arial,helvetica,sans-serif; font-size: 1.5rem;
+                color: black; background-color: white;}
+
+th              {font-weight: bold}
+
+/* standard tables are used for most tabular information */
+table.standardTable
+{
+    background-color: White;
+    border-color: Gray;
+    border-width: 2px;
+    border-style: solid;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table.standardTable thead { 
+    color:  #000000;
+    background-color: #C0C0FF;
+    font-weight:    bold;
+    font-style: normal;
+    text-decoration:    none;
+    word-spacing:   normal;
+    letter-spacing: normal;
+    text-transform: none;
+    vertical-align: top;
+    }   
+    
+table.standardTable tbody tr:nth-child(odd)   {color: black; background-color: white;}
+table.standardTable tbody tr:nth-child(even)    {color: black; background-color: #E0E0E0;}
+
+table.standardTable td {
+    padding: 3px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    }
