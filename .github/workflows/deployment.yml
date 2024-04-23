@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Deployment Pipeline
 
 on:
   push:
@@ -20,17 +20,8 @@ jobs:
         with:
           node-version: "16"
 
-      - name: Clear npm cache
-        run: npm cache clean --force
-
       - name: Install dependencies
         run: npm install
-
-      - name: Build project
-        run: npm run build
-
-      - name: Install ESLint
-        run: npm install eslint --save-dev
 
       - name: Lint
         run: npm run lint
@@ -38,9 +29,7 @@ jobs:
       - name: Run script
         run: node run.js
 
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

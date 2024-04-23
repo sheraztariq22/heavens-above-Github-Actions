@@ -5,10 +5,9 @@
   "description": "Scripts for scraping the Heavens Above website.",
   "main": "run.js",
   "scripts": {
-    "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
     "start": "node run.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "build": "^0.1.4",
