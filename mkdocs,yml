@@ -1,0 +1,6 @@
+site_name: My Project Documentation
+nav:
+  - Home: index.md
+  - About: about.md
+  - Usage: usage.md
+theme: readthedocs
