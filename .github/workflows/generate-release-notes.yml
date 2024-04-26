@@ -17,7 +17,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: --user your-username --project your-repo --token ${{ secrets.GITHUB_TOKEN }}
+          args: --user sheraztariq22 --project heavens-above-Github-Actions --token ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update Release
         uses: actions/github-script@v3
