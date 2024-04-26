@@ -1,0 +1,35 @@
+name: Generate Release Notes
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release-notes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate Release Notes
+        id: release_notes
+        uses: docker://ferrarimarco/github-changelog-generator:1.15.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: --user your-username --project your-repo --token ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Release
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const fs = require('fs');
+            const releaseNotes = fs.readFileSync('CHANGELOG.md', 'utf8');
+
+            github.repos.updateRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: context.payload.release.id,
+              body: releaseNotes
+            })
