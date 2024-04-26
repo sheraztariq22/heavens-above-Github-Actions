@@ -10,8 +10,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Generate changelog
+        id: changelog
         uses: mikepenz/release-changelog-builder-action@v1.8.1
         with:
           configuration: ".github/changelog_config.yml"
