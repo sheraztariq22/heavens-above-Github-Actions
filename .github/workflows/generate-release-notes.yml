@@ -10,26 +10,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Generate Release Notes
-        id: release_notes
-        uses: docker://ferrarimarco/github-changelog-generator:1.15.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Generate changelog
+        uses: mikepenz/release-changelog-builder-action@v1.8.1
         with:
-          args: --user sheraztariq22 --project heavens-above-Github-Actions --token ${{ secrets.GITHUB_TOKEN }}
+          configuration: ".github/changelog_config.yml"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update Release
         uses: actions/github-script@v3
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const fs = require('fs');
-            const releaseNotes = fs.readFileSync('CHANGELOG.md', 'utf8');
-
             github.repos.updateRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
               release_id: context.payload.release.id,
-              body: releaseNotes
+              body: ${{ steps.changelog.outputs.changelog }}
             })
